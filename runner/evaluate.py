@@ -11,12 +11,14 @@ def make_benchmark(instance: str, data_path: str = "yahpo_data"):
     return bench
 
 def run_one(bench, cfg: dict, seed: int = 0):
+    # returns both a single scalar score and full output dict for later analysis
     out = bench.objective_function(cfg)
-    out = out[0]
+    out = out[0]# SID:- changed the list of dict to dict
 
     if isinstance(out, dict) and TARGET_KEY in out:
         score = float(out[TARGET_KEY][0])
     else:
+        # fallback: first numeric value
         k = list(out.keys())[0] if isinstance(out, dict) else None
         score = float(out[k]) if k else float(out)
 

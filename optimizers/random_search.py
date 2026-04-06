@@ -6,7 +6,7 @@ from datetime import datetime
 
 from runner.evaluate import make_benchmark, run_one, BENCH_NAME
 
-def random_search(instance="146212", seed=0, n_trials=200, out_dir="results"):
+def random_search(instance="7593", seed=0, n_trials=30, out_dir="results"):
     random.seed(seed)
 
     bench = make_benchmark(instance)
@@ -27,7 +27,7 @@ def random_search(instance="146212", seed=0, n_trials=200, out_dir="results"):
         for t in range(n_trials):
             cfg = bench.config_space.sample_configuration(1).get_dictionary()
             score, out = run_one(bench, cfg, seed=seed)
-            out = {k : float(v) for k,v in out.items()}
+            out = {k : float(v) for k,v in out.items()}#Changed float32 to float
 
             if best_score is None or score < best_score:
                 best_score = score
@@ -52,4 +52,10 @@ def random_search(instance="146212", seed=0, n_trials=200, out_dir="results"):
     print("CSV SAVED:", out_csv)
 
 if __name__ == "__main__":
-    random_search(instance="146212", seed=0, n_trials=200)
+    import argparse
+    p = argparse.ArgumentParser()
+    p.add_argument("--instance", default="3945")
+    p.add_argument("--seed", type=int, default=0)
+    p.add_argument("--n_evals", type=int, default=200)
+    args = p.parse_args()
+    random_search(instance=args.instance, seed=args.seed, n_evals=args.n_evals)
