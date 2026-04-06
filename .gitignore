@@ -1,1 +1,7 @@
 yahpo_data/
+results/
+artifacts/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store
