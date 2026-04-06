@@ -6,7 +6,7 @@ from datetime import datetime
 
 from runner.evaluate import make_benchmark, run_one, BENCH_NAME
 
-def random_search(instance="3945", seed=0, n_trials=30, out_dir="results"):
+def random_search(instance="146212", seed=0, n_trials=200, out_dir="results"):
     random.seed(seed)
 
     bench = make_benchmark(instance)
@@ -52,4 +52,4 @@ def random_search(instance="3945", seed=0, n_trials=30, out_dir="results"):
     print("CSV SAVED:", out_csv)
 
 if __name__ == "__main__":
-    random_search(instance="3945", seed=0, n_trials=30)
+    random_search(instance="146212", seed=0, n_trials=200)
