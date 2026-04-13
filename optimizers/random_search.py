@@ -6,7 +6,8 @@ from datetime import datetime
 
 from runner.evaluate import make_benchmark, run_one, BENCH_NAME
 
-def random_search(instance="7593", seed=0, n_trials=30, out_dir="results"):
+def random_search(instance="7593", seed=0, n_evals=30, out_dir="results"):
+    n_trials = n_evals
     random.seed(seed)
 
     bench = make_benchmark(instance)
