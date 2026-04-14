@@ -59,3 +59,4 @@ if __name__ == "__main__":
     p.add_argument("--n_evals", type=int, default=200)
     args = p.parse_args()
     random_search(instance=args.instance, seed=args.seed, n_evals=args.n_evals)
+    
