@@ -9,8 +9,11 @@ def plot_anytime(csv_path: str):
 
     with open(csv_path, "r", encoding="utf-8") as f:
         reader = csv.DictReader(f)
-        for row in reader:
-            trials.append(int(row["trial_id"]))
+        for i, row in enumerate(reader):
+            try:
+                trials.append(int(row["trial_id"]))
+            except (ValueError, KeyError):
+                trials.append(i)
             scores.append(float(row["score"]))
 
     best_so_far = []

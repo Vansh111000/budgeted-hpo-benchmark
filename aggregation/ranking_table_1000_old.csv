@@ -1,0 +1,4 @@
+method,avg_rank_lower_is_better,cells_counted,win_count
+tpe,1.4,15,10
+cats,1.8,15,5
+random,2.8,15,0
